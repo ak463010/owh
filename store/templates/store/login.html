@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %}
+{% block title %}Login{% endblock title %}
+{% block container %}
+<div class="col-md-4 mx-auto border rounded mt-5">
+    <h2 class="text-center mt-4 mb-4">Login</h2>
+    {% if error %}
+        <p class="alert alert-danger">{{ error }}</p>
+    {% endif %}
+    <form action="{% url 'login' %}" method="POST" novalidate class="mb-4">
+        {% csrf_token %}
+        {{ login.as_p }}
+        <input type="submit" value="Login" class="btn btn-info btn-sm">
+    </form>
+</div>
+{% endblock container %}
+

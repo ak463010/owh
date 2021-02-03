@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BASE{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'store/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'store/css/store.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+    {% include 'store/inc/navbar.html' %}
+    {% if request.session.successmsg %}
+    <div class="col-md-6 col-12 mx-auto mb-4">
+        <div class="alert alert-success" role="alert">
+        {{ request.session.successmsg }}
+        </div>
+    </div>
+    {% endif %}
+    {% block container %}
+    
+    {% endblock container %}
+    </div>
+    <script src="{% static 'store/js/jquery.js' %}"></script>
+    <script src="{% static 'store/js/popper.js' %}"></script>
+    <script src="{% static 'store/js/bootstrap.js' %}"></script>
+</body>
+</html>

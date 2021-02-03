@@ -1,0 +1,5 @@
+.errorlist {
+    list-style: none;
+    float: right;
+    color: red;
+}

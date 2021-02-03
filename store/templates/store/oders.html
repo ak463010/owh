@@ -1,0 +1,41 @@
+{% extends 'store/base.html' %}
+{% load cart %}
+{% block title %}Store{% endblock title %}
+{% block container %}
+<div class="row">
+    <div class="col-12 border rounded">
+        <h1 class="p-2">Your Oders</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Sr#</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Qantity</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for oder in oders %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><img style="width:50px" src="{{ oder.product.image.url }}" alt=""></td>
+                    <td>{{ oder.product.name }}</td>
+                    <td>{{ oder.quantity }}</td>
+                    <td>{{ oder.price }}</td>
+                    {% if oder.status %}
+                    <td><small class="badge badge-success">Completed</small></td>
+                    {% else %}
+                    <td><small class="badge badge-warning">Pending</small></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock container %}
